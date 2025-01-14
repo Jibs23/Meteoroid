@@ -135,7 +135,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 15
+  m_Mass: 50
   m_LinearDamping: 0
   m_AngularDamping: 0
   m_GravityScale: 0
@@ -208,6 +208,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a553913b78284954fb9356544838dfcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myRigidbody: {fileID: 474699783848906792}
+  RotationSpeed: 0
+  StartMoveSpeed: 0
 --- !u!114 &5321889698761475820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,5 +223,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c77a84cfa969eaf4a9aabb523982fa1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 1
-  MaxHealth: 1
+  CurrentHealth: 0
+  MaxHealth: 5
