@@ -4,6 +4,7 @@ public class PlayerScript : MonoBehaviour
 {
     public Rigidbody2D myRigidbody;
     public GameObject bulletPrefab;
+    public LogicScript Logic;
     public float moveSpeed = 5f;
     public float rotationSpeed = 1250f;
     public float bulletCooldown = 0.5f;
@@ -11,7 +12,7 @@ public class PlayerScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
     }
 
     // Update is called once per frame
@@ -47,6 +48,9 @@ public class PlayerScript : MonoBehaviour
             
             // Orient the bullet in the same direction as the rigid body
             bullet.transform.rotation = myRigidbody.transform.rotation;
+
+            // Add a number to the bullet's y transform relative to Player object's rotation
+            bullet.transform.position += transform.up;
 
             // Update the last shot time
             lastShotTime = Time.time;

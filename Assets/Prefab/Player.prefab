@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 646664483655329059}
   - component: {fileID: 3345366209525654843}
   - component: {fileID: 7892152725685337206}
+  - component: {fileID: 8713972730202793047}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -196,11 +197,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 1}
-      - {x: -0.95105654, y: 0.30901697}
-      - {x: -0.5877852, y: -0.80901706}
-      - {x: 0.58778536, y: -0.80901694}
-      - {x: 0.9510565, y: 0.30901712}
+    - - {x: -0.004996851, y: 0.6402366}
+      - {x: -0.1615758, y: 0.11914177}
+      - {x: -0.28270912, y: -0.3142992}
+      - {x: 0.0875766, y: -0.3143264}
+      - {x: 0.30796945, y: -0.31434262}
+      - {x: 0.15158254, y: 0.13413218}
   m_UseDelaunayMesh: 0
 --- !u!114 &3345366209525654843
 MonoBehaviour:
@@ -216,6 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myRigidbody: {fileID: 4156670925261397421}
   bulletPrefab: {fileID: 3540154762647373374, guid: 01be07539fdc7f441bde624a4f0bea4b, type: 3}
+  Logic: {fileID: 0}
   moveSpeed: 5
   rotationSpeed: 1250
   bulletCooldown: 0.5
@@ -235,3 +238,15 @@ MonoBehaviour:
   MaxHealth: 3
   CurrentHealth: 0
   invincibilityTime: 3
+--- !u!114 &8713972730202793047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6285647023202481903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b69b285487b9fb64ea10765b8f2d99f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
