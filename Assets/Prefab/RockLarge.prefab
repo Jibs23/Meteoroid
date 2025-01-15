@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 5325478585422106942}
   - component: {fileID: 5321889698761475820}
   - component: {fileID: 6072406948838139421}
+  - component: {fileID: -4546754071854843019}
   m_Layer: 0
   m_Name: RockLarge
   m_TagString: Blastable
@@ -225,8 +226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c77a84cfa969eaf4a9aabb523982fa1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 0
   MaxHealth: 5
+  CurrentHealth: 5
 --- !u!114 &6072406948838139421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,5 +238,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b69b285487b9fb64ea10765b8f2d99f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScreenWrapLeeway: 1.5
+--- !u!114 &-4546754071854843019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3952047864391941474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3d5868bf602ab1449b039458466e7c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

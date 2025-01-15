@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    private HealthScript Health;
     public Rigidbody2D myRigidbody;
     public GameObject bulletPrefab;
     public LogicScript Logic;
@@ -13,11 +14,13 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         Logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
+        Health = GetComponent<HealthScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //* CONTROLS
         if (Input.GetKey(KeyCode.W)) // move forward
         {
             myRigidbody.AddForce(transform.up * moveSpeed);
@@ -34,6 +37,12 @@ public class PlayerScript : MonoBehaviour
         {
             // Call the Shoot method
             Shoot();
+        }
+        
+        //* WHEN YOU DIE
+        if (Health.IsDead)
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -55,5 +64,10 @@ public class PlayerScript : MonoBehaviour
             // Update the last shot time
             lastShotTime = Time.time;
         }
+    }
+    public void Die()
+    {
+        Logic.isGameOver = true;
+        Destroy(gameObject);
     }
 }

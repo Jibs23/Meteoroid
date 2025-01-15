@@ -33,7 +33,6 @@ public class LogicScript : MonoBehaviour
         // Get the top and bottom of the screen in world units
         TopOfScreenInWorld = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)).y;
         BottomOfScreenInWorld = Camera.main.ScreenToWorldPoint(new Vector2(0f, 0f)).y;
-        Debug.Log("Right side of screen in world: " + RightSideOfScreenInWorld);
     }
 
 

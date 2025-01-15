@@ -18,19 +18,21 @@ public class BulletScript : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("Bullet hit something");
+        Debug.Log("Bullet hit " + other.gameObject.name);
         try
         {
-            RockHealthScript rockHealth = other.gameObject.GetComponent<RockHealthScript>();
-            if (rockHealth != null)
+            HealthScript EntityHealth = other.gameObject.GetComponent<HealthScript>();
+            if (EntityHealth != null)
             {
-                rockHealth.takeDamage(BulletDamage);
+                EntityHealth.takeDamage(BulletDamage);
             }
         }
         catch (System.NullReferenceException)
         {
-            Debug.Log("Bullet hit something that is not a rock");
+            Debug.Log("Bullet hit " +  other.gameObject.name + " which does not have a HealthScript");
         }
+        
+        //* DEATH
         Destroy(gameObject);
 
     }

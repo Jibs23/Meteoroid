@@ -99,8 +99,8 @@ GameObject:
   - component: {fileID: 4156670925261397421}
   - component: {fileID: 646664483655329059}
   - component: {fileID: 3345366209525654843}
-  - component: {fileID: 7892152725685337206}
   - component: {fileID: 8713972730202793047}
+  - component: {fileID: 688988616706758571}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -222,22 +222,6 @@ MonoBehaviour:
   moveSpeed: 5
   rotationSpeed: 1250
   bulletCooldown: 0.5
---- !u!114 &7892152725685337206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6285647023202481903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 673ad03f0f239924f8c688f0476507af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Logic: {fileID: 0}
-  MaxHealth: 3
-  CurrentHealth: 0
-  invincibilityTime: 3
 --- !u!114 &8713972730202793047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,3 +234,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69b285487b9fb64ea10765b8f2d99f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScreenWrapLeeway: 1
+--- !u!114 &688988616706758571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6285647023202481903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77a84cfa969eaf4a9aabb523982fa1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 3
+  CurrentHealth: 3
