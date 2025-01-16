@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class RockMovement : MonoBehaviour
@@ -6,15 +7,15 @@ public class RockMovement : MonoBehaviour
     public int RotationSpeed;
     public int StartMoveSpeed;
     public LogicScript Logic;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         // Find components
+        myRigidbody = GetComponent<Rigidbody2D>();
         Logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
         
         // ADD RANDOM ROTATION
         myRigidbody.rotation = Random.Range(0, 360);
-        RotationSpeed = Random.Range(30, 100);
+        RotationSpeed = Random.Range(850, 1250);
         if (Random.value > 0.5f) // Random.value returns a random float between 0 and 1
         {
             myRigidbody.AddTorque(RotationSpeed);
@@ -25,7 +26,7 @@ public class RockMovement : MonoBehaviour
         }
         
         // ADD RANDOM MOVEMENT
-        StartMoveSpeed = Random.Range(100, 200);
+        StartMoveSpeed = Random.Range(2500, 3500);
         Vector2 randomDirection = Random.insideUnitCircle.normalized; // Random.insideUnitCircle returns a random point inside the unit circle, normalized makes it a vector with a magnitude of 1
         myRigidbody.AddForce(randomDirection * StartMoveSpeed); // Add a force in the random direction
 

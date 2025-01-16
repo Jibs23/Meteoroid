@@ -5,6 +5,7 @@ public class BulletScript : MonoBehaviour
     public float bulletSpeed = 10f;
     public Rigidbody2D myRigidbody;
     public int BulletDamage = 1;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

@@ -43,6 +43,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2154163122552719852}
   - component: {fileID: 7429736956728512826}
+  - component: {fileID: 8986587830340586047}
   m_Layer: 0
   m_Name: LogicManager
   m_TagString: Logic
@@ -82,6 +83,22 @@ MonoBehaviour:
   LeftSideOfScreenInWorld: 0
   TopOfScreenInWorld: 0
   BottomOfScreenInWorld: 0
+--- !u!114 &8986587830340586047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3252390931122089538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0176a0b325a2a764ea298065c9ca4475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LargeRock: {fileID: 3952047864391941474, guid: 337f0584199193d43b4b07e3c5f854a5, type: 3}
+  Logic: {fileID: 7429736956728512826}
+  RockCount: 0
+  DesiredRocks: 1
 --- !u!1 &6018227026881893068
 GameObject:
   m_ObjectHideFlags: 0

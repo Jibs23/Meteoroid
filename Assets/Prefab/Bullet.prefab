@@ -127,7 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69b285487b9fb64ea10765b8f2d99f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScreenWrapLeeway: 1
+  ScreenWrapReapearBuffer: 1
+  ScreenWrapLateDepartureBuffer: 1
 --- !u!1 &8573485857466577388
 GameObject:
   m_ObjectHideFlags: 0

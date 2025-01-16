@@ -11,7 +11,7 @@ public class LogicScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        CheckScreenSize();
     }
 
     // Update is called once per frame
@@ -34,6 +34,5 @@ public class LogicScript : MonoBehaviour
         TopOfScreenInWorld = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)).y;
         BottomOfScreenInWorld = Camera.main.ScreenToWorldPoint(new Vector2(0f, 0f)).y;
     }
-
 
 }

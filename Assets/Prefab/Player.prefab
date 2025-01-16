@@ -136,7 +136,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 6
+  m_Mass: 5
   m_LinearDamping: 0
   m_AngularDamping: 8
   m_GravityScale: 0
@@ -219,9 +219,9 @@ MonoBehaviour:
   myRigidbody: {fileID: 4156670925261397421}
   bulletPrefab: {fileID: 3540154762647373374, guid: 01be07539fdc7f441bde624a4f0bea4b, type: 3}
   Logic: {fileID: 0}
-  moveSpeed: 5
-  rotationSpeed: 1250
-  bulletCooldown: 0.5
+  moveSpeed: 10
+  rotationSpeed: 1000
+  bulletCooldown: 0.3
 --- !u!114 &8713972730202793047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,7 +234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69b285487b9fb64ea10765b8f2d99f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScreenWrapLeeway: 1
+  ScreenWrapReapearBuffer: 1
+  ScreenWrapLateDepartureBuffer: 30
 --- !u!114 &688988616706758571
 MonoBehaviour:
   m_ObjectHideFlags: 0
