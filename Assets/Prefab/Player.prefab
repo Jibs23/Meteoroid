@@ -5241,6 +5241,7 @@ MonoBehaviour:
   Animator: {fileID: 7765352683572077131}
   HealthUI: {fileID: 5725433117774206490}
   ThrustParticles: {fileID: 7989985854299584510}
+  DeathExplosion: {fileID: 1812313173889548293, guid: 508bf9ba30e7ee048b2f2b9d4c8e2f3d, type: 3}
   moveSpeed: 20
   rotationSpeed: 1000
   bulletCooldown: 0.3

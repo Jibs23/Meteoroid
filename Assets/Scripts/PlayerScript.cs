@@ -11,6 +11,7 @@ public class PlayerScript : MonoBehaviour
     public HealthUiScript HealthUI;
     private SpriteRenderer spriteRenderer;
     public ParticleSystem ThrustParticles;
+    public ParticleSystem DeathExplosion;
     public float moveSpeed = 5f;
     public float rotationSpeed = 1250f;
     public float bulletCooldown = 0.5f;
@@ -135,6 +136,20 @@ public class PlayerScript : MonoBehaviour
     public void Die()
     {
         Logic.isGameOver = true;
+        
+        // Play the death animation
+        var DeathExplosionInstance = Instantiate(DeathExplosion, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + 180));
+        DeathExplosionInstance.transform.localScale = new Vector3(1, 1, 1);
+        var mainModule = DeathExplosionInstance.main;
+        Color color;
+        if (UnityEngine.ColorUtility.TryParseHtmlString("#b0ea3f", out color))
+        {
+            mainModule.startColor = color;
+        }
+        DeathExplosionInstance.Play();
+
+        // Destroy the player object
+        Destroy(DeathExplosionInstance.gameObject, DeathExplosionInstance.main.duration);
         Destroy(gameObject);
     }
 
