@@ -10,6 +10,7 @@ public class PlayerScript : MonoBehaviour
     public Animator Animator;
     public HealthUiScript HealthUI;
     private SpriteRenderer spriteRenderer;
+    public ParticleSystem ThrustParticles;
     public float moveSpeed = 5f;
     public float rotationSpeed = 1250f;
     public float bulletCooldown = 0.5f;
@@ -41,6 +42,7 @@ public class PlayerScript : MonoBehaviour
         }
 
 
+
         // Handle key inputs
         foreach (KeyCode key in new KeyCode[] { KeyCode.W, KeyCode.D, KeyCode.A, KeyCode.Space }) // Loop through the keys we want to check for input
         {
@@ -64,6 +66,17 @@ public class PlayerScript : MonoBehaviour
                 }
             }
         }
+        // PARTICLES
+        if (IsThrusting)
+        {
+            ThrustParticles.Play();
+        }
+        else
+        {
+            ThrustParticles.Stop();
+        }
+
+        // HEALTH UI
         if (Health != null && Health.CurrentHealth != Health.MaxHealth)
         {
             UpdateHealthEndicator();
