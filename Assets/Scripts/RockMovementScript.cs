@@ -7,6 +7,8 @@ public class RockMovement : MonoBehaviour
     public int RotationSpeed;
     public int StartMoveSpeed;
     public LogicScript Logic;
+    public float MinSpeed = 1500f;
+    public float MaxSpeed = 4000f;
     void Start()
     {
         // Find components
@@ -26,7 +28,7 @@ public class RockMovement : MonoBehaviour
         }
         
         // ADD RANDOM MOVEMENT
-        StartMoveSpeed = Random.Range(2500, 3500);
+        StartMoveSpeed = Random.Range(3000, 4000);
         Vector2 randomDirection = Random.insideUnitCircle.normalized; // Random.insideUnitCircle returns a random point inside the unit circle, normalized makes it a vector with a magnitude of 1
         myRigidbody.AddForce(randomDirection * StartMoveSpeed); // Add a force in the random direction
 
@@ -35,6 +37,22 @@ public class RockMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // If the speed of the object is less than the minimum speed
+        if (myRigidbody.linearVelocity.magnitude < MinSpeed)
+        {
+            // Add a force in the direction of the velocity
+            myRigidbody.AddForce(myRigidbody.linearVelocity.normalized);
+        }
+        if (myRigidbody.linearVelocity.magnitude > MaxSpeed)
+        {
+            // Add a force in the opposite direction of the velocity
+            myRigidbody.AddForce(-myRigidbody.linearVelocity.normalized);
+        }
+    }
+    void OnDrag()
+    {
+        // If the object is dragged
+        // Set the position of the object to the position of the mouse
+        transform.position = Input.mousePosition;
     }
 }

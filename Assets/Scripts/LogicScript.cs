@@ -8,6 +8,7 @@ public class LogicScript : MonoBehaviour
     public float LeftSideOfScreenInWorld;
     public float TopOfScreenInWorld;
     public float BottomOfScreenInWorld;
+    public Vector3 ScreenCenter;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,6 +24,7 @@ public class LogicScript : MonoBehaviour
         {
             CheckScreenSize();
         }
+
     }
     void CheckScreenSize() // This function checks the size of the screen in world units
     {   
@@ -33,6 +35,9 @@ public class LogicScript : MonoBehaviour
         // Get the top and bottom of the screen in world units
         TopOfScreenInWorld = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)).y;
         BottomOfScreenInWorld = Camera.main.ScreenToWorldPoint(new Vector2(0f, 0f)).y;
+
+        // Get the center of the screen in world units
+        ScreenCenter = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width / 2, Screen.height / 2)); // Get the center of the screen in world units
     }
 
 }

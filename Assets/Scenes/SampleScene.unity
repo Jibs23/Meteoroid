@@ -219,9 +219,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.002144772
-    width: 1.0004885
-    height: 0.9951742
+    y: 0
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -281,17 +281,6 @@ MonoBehaviour:
   m_CropFrameX: 0
   m_CropFrameY: 0
   m_StretchFill: 0
---- !u!114 &1999169396 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7429736956728512826, guid: 10a24e133589e554e99af99919b6ae05, type: 3}
-  m_PrefabInstance: {fileID: 8574398103122168794}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4643904d53362334db08bd230886f6a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7640826395132886223
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -344,21 +333,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6285647023202481903, guid: a0c0e102321f518458db297f01deee33, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7892152725685337206, guid: a0c0e102321f518458db297f01deee33, type: 3}
-      propertyPath: Logic
-      value: 
-      objectReference: {fileID: 1999169396}
-    - target: {fileID: 8713972730202793047, guid: a0c0e102321f518458db297f01deee33, type: 3}
-      propertyPath: ScreenWrapLeeway
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 4272422284936293825, guid: a0c0e102321f518458db297f01deee33, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0c0e102321f518458db297f01deee33, type: 3}

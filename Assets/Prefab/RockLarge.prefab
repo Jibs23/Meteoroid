@@ -418,7 +418,7 @@ GameObject:
   - component: {fileID: -4546754071854843019}
   m_Layer: 0
   m_Name: RockLarge
-  m_TagString: Blastable
+  m_TagString: Rock
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -529,6 +529,8 @@ MonoBehaviour:
   RotationSpeed: 0
   StartMoveSpeed: 0
   Logic: {fileID: 0}
+  MinSpeed: 2500
+  MaxSpeed: 5000
 --- !u!114 &5321889698761475820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,8 +557,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69b285487b9fb64ea10765b8f2d99f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScreenWrapReapearBuffer: 1.5
+  ScreenWrapReapearBuffer: 2
   ScreenWrapLateDepartureBuffer: 150
+  timeOutOfScreen: 0
+  maxTimeOutOfScreen: 2
 --- !u!114 &-4546754071854843019
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Blastable
   - Logic
+  - Rock
+  - Projectile
   layers:
   - Default
   - TransparentFX

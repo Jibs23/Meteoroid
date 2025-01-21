@@ -1,48 +1,102 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    private HealthScript Health;
+    public HealthScript Health;
     public Rigidbody2D myRigidbody;
     public GameObject bulletPrefab;
     public LogicScript Logic;
+    public Animator Animator;
+    public HealthUiScript HealthUI;
+    private SpriteRenderer spriteRenderer;
     public float moveSpeed = 5f;
     public float rotationSpeed = 1250f;
     public float bulletCooldown = 0.5f;
+    public bool IsThrusting;
+    public bool IsOffScreen;
+    public bool IsDying;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
+        HealthUI = GameObject.FindGameObjectWithTag("HealthUI").GetComponent<HealthUiScript>();
         Health = GetComponent<HealthScript>();
+        Animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //* CONTROLS
-        if (Input.GetKey(KeyCode.W)) // move forward
+        IsThrusting = false; // Reset IsThrusting at the start of each frame
+        if (transform.position.x > Logic.RightSideOfScreenInWorld || transform.position.x < Logic.LeftSideOfScreenInWorld || transform.position.y > Logic.TopOfScreenInWorld || transform.position.y < Logic.BottomOfScreenInWorld)
         {
-            myRigidbody.AddForce(transform.up * moveSpeed);
+            IsOffScreen = true;
         }
-        if (Input.GetKey(KeyCode.D)) // turn right
+        else
         {
-            myRigidbody.AddTorque(-rotationSpeed * Time.deltaTime);
+            IsOffScreen = false;
         }
-        if (Input.GetKey(KeyCode.A)) // turn left
+
+
+        // Handle key inputs
+        foreach (KeyCode key in new KeyCode[] { KeyCode.W, KeyCode.D, KeyCode.A, KeyCode.Space }) // Loop through the keys we want to check for input
         {
-            myRigidbody.AddTorque(rotationSpeed * Time.deltaTime);
+            if (Input.GetKey(key)) // Check if the key is being held down
+            {
+                switch (key) // Check which key is being held down
+                {
+                    case KeyCode.W: // move forward
+                        myRigidbody.AddForce(transform.up * moveSpeed);
+                        IsThrusting = true; 
+                        break;
+                    case KeyCode.D: // turn right
+                        myRigidbody.AddTorque(-rotationSpeed * Time.deltaTime);
+                        break;
+                    case KeyCode.A: // turn left
+                        myRigidbody.AddTorque(rotationSpeed * Time.deltaTime);
+                        break;
+                    case KeyCode.Space: // Shoot
+                        Shoot();
+                        break;
+                }
+            }
         }
-        if (Input.GetKey(KeyCode.Space)) // Shoot
+        if (Health != null && Health.CurrentHealth != Health.MaxHealth)
         {
-            // Call the Shoot method
-            Shoot();
+            UpdateHealthEndicator();
         }
-        
+
         //* WHEN YOU DIE
-        if (Health.IsDead)
+        if (Health != null && Health.IsDead)
         {
-            Destroy(gameObject);
+            Die();
+        }
+        Animator.SetBool("IsThrusting", IsThrusting); // Set the IsThrusting parameter in the Animator to the value of IsThrusting
+
+    }
+    void UpdateHealthEndicator()
+    {
+        if (Health == null || HealthUI == null)
+        {
+            Debug.LogError("<color=red>Health or HealthUI is not assigned.</color>");
+            return;
+        }
+
+        if (Health.CurrentHealth ==  1)
+        {
+            HealthUI.LoseH3();
+            IsDying = true;
+        }
+        else if (Health.CurrentHealth == 2)
+        {
+            HealthUI.LoseH2();
+        }
+        else if (Health.CurrentHealth == 3)
+        {
+            HealthUI.LoseH1();
         }
     }
 
@@ -70,4 +124,5 @@ public class PlayerScript : MonoBehaviour
         Logic.isGameOver = true;
         Destroy(gameObject);
     }
+
 }
