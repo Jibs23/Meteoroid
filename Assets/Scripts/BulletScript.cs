@@ -20,9 +20,9 @@ public class BulletScript : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("Bullet hit " + other.gameObject.name);
         try
         {
+            Debug.Log("Bullet hit " + other.gameObject.name);
             HealthScript EntityHealth = other.gameObject.GetComponent<HealthScript>();
             if (EntityHealth != null)
             {
@@ -31,7 +31,7 @@ public class BulletScript : MonoBehaviour
         }
         catch (System.NullReferenceException)
         {
-            Debug.Log("Bullet hit " +  other.gameObject.name + " which does not have a HealthScript");
+            Debug.Log("No HealthScript found on " + other.gameObject.name);
         }
         
         //* DEATH

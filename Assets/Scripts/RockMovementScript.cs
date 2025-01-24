@@ -9,6 +9,7 @@ public class RockMovement : MonoBehaviour
     public LogicScript Logic;
     public float MinSpeed = 1500f;
     public float MaxSpeed = 4000f;
+    public int RockDammage = 1;
     void Start()
     {
         // Find components
@@ -54,5 +55,24 @@ public class RockMovement : MonoBehaviour
         // If the object is dragged
         // Set the position of the object to the position of the mouse
         transform.position = Input.mousePosition;
+    }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "player")
+        {         
+            try
+            {
+                Debug.Log("Rock hit " + other.gameObject.name);
+                HealthScript EntityHealth = other.gameObject.GetComponent<HealthScript>();
+                if (EntityHealth != null)
+                {
+                    EntityHealth.takeDamage(RockDammage);
+                }
+            }
+            catch (System.NullReferenceException)
+            {
+                Debug.Log("No HealthScript found on " + other.gameObject.name);
+            }
+        }
     }
 }

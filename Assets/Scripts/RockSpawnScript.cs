@@ -63,7 +63,6 @@ public class RockSpawnScript : MonoBehaviour
             if (UnityEngine.Vector2.Distance(rock.transform.position, spawnPosition) < screenWrap.ScreenWrapReapearBuffer)
             {
                 positionIsValid = false;
-                Debug.Log("Rock spawn position is too close to existing rock. Trying again.");
                 break;
             }
             }
@@ -87,7 +86,6 @@ public class RockSpawnScript : MonoBehaviour
         {
             Instantiate(LargeRock, spawnPosition, UnityEngine.Quaternion.identity); //quaternion.identity is the default rotation
             RockCount++;
-            Debug.Log("Rock spawned at " + spawnPosition);
         }
     }
 }

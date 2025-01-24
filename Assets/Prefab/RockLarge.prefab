@@ -416,6 +416,8 @@ GameObject:
   - component: {fileID: 5321889698761475820}
   - component: {fileID: 6072406948838139421}
   - component: {fileID: -4546754071854843019}
+  - component: {fileID: 3106383227663833439}
+  - component: {fileID: 1006887241848991211}
   m_Layer: 0
   m_Name: RockLarge
   m_TagString: Rock
@@ -531,6 +533,7 @@ MonoBehaviour:
   Logic: {fileID: 0}
   MinSpeed: 2500
   MaxSpeed: 5000
+  RockDammage: 1
 --- !u!114 &5321889698761475820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -543,6 +546,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c77a84cfa969eaf4a9aabb523982fa1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  screenShakeProfile: {fileID: 11400000, guid: ef94e8b16bb963e4b8ce032646ba9e0d, type: 2}
+  MainCamera: {fileID: 0}
   MaxHealth: 5
   CurrentHealth: 5
 --- !u!114 &6072406948838139421
@@ -574,3 +579,75 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RockSpawn: {fileID: 0}
+--- !u!114 &3106383227663833439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3952047864391941474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd438dd108a0f284aa931a2da434f1d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_ImpulseShape: 0
+    m_CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ImpulseDuration: 0.2
+    m_ImpulseType: 0
+    m_DissipationRate: 0.25
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 100
+    m_PropagationSpeed: 343
+  m_DefaultVelocity: {x: 0, y: -1, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_IgnoreTag: 
+  m_UseImpactDirection: 0
+  m_ScaleImpactWithMass: 0
+  m_ScaleImpactWithSpeed: 0
+--- !u!114 &1006887241848991211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3952047864391941474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3629f910e4f7f8a4ba43e31b4af43e76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

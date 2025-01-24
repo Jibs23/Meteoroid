@@ -31,6 +31,7 @@ Transform:
   m_Children:
   - {fileID: 2154163122552719852}
   - {fileID: 776789059687195893}
+  - {fileID: 7937941279709385443}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3252390931122089538
@@ -83,6 +84,7 @@ MonoBehaviour:
   LeftSideOfScreenInWorld: 0
   TopOfScreenInWorld: 0
   BottomOfScreenInWorld: 0
+  ScreenCenter: {x: 0, y: 0, z: 0}
 --- !u!114 &8986587830340586047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,7 +100,53 @@ MonoBehaviour:
   LargeRock: {fileID: 3952047864391941474, guid: 337f0584199193d43b4b07e3c5f854a5, type: 3}
   Logic: {fileID: 7429736956728512826}
   RockCount: 0
-  DesiredRocks: 1
+  DesiredRocks: 0
+--- !u!1 &4086009301296317373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7937941279709385443}
+  - component: {fileID: 7713862557728107415}
+  m_Layer: 0
+  m_Name: CameraShakeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7937941279709385443
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4086009301296317373}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6022658437772114371}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7713862557728107415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4086009301296317373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f05c66ec7af77e4ea37537ff4ff0f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  globalShakeForce: 1
+  ImpulseListener: {fileID: 0}
 --- !u!1 &6018227026881893068
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,7 +12,9 @@ public class PlayerScript : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public ParticleSystem ThrustParticles;
     public ParticleSystem DeathExplosion;
+    public float MaxSpeed = 5f;
     public float moveSpeed = 5f;
+    public float CurrentSpeed;
     public float rotationSpeed = 1250f;
     public float bulletCooldown = 0.5f;
     public bool IsThrusting;
@@ -49,11 +51,20 @@ public class PlayerScript : MonoBehaviour
         {
             if (Input.GetKey(key)) // Check if the key is being held down
             {
-                switch (key) // Check which key is being held down
+                // Check which key is being held down
+                switch (key)
                 {
                     case KeyCode.W: // move forward
-                        myRigidbody.AddForce(transform.up * moveSpeed);
-                        IsThrusting = true; 
+                        if (myRigidbody.linearVelocity.magnitude < MaxSpeed)
+                        {
+                            Vector2 force = transform.up * moveSpeed;
+                            if (Vector2.Dot(myRigidbody.linearVelocity, force) < 0) // Check if facing the opposite direction
+                            {
+                                force *= 3; // boost the force if facing the opposite direction
+                            }
+                            myRigidbody.AddForce(force);
+                        }
+                        IsThrusting = true;
                         break;
                     case KeyCode.D: // turn right
                         myRigidbody.AddTorque(-rotationSpeed * Time.deltaTime);
@@ -75,6 +86,12 @@ public class PlayerScript : MonoBehaviour
         else
         {
             ThrustParticles.Stop();
+        }
+
+        CurrentSpeed = myRigidbody.linearVelocity.magnitude;
+        if (CurrentSpeed > MaxSpeed)
+        {
+            myRigidbody.linearVelocity = myRigidbody.linearVelocity.normalized * MaxSpeed; // Normalize the velocity and multiply it by the max speed
         }
 
         // HEALTH UI
@@ -99,16 +116,16 @@ public class PlayerScript : MonoBehaviour
             return;
         }
 
-        if (Health.CurrentHealth ==  1)
+        if (Health.CurrentHealth ==  1 && HealthUI.H3.activeSelf)
         {
             HealthUI.LoseH3();
             IsDying = true;
         }
-        else if (Health.CurrentHealth == 2)
+        else if (Health.CurrentHealth == 2 && HealthUI.H2.activeSelf)
         {
             HealthUI.LoseH2();
         }
-        else if (Health.CurrentHealth == 3)
+        else if (Health.CurrentHealth == 3 && HealthUI.H1.activeSelf)
         {
             HealthUI.LoseH1();
         }
@@ -138,19 +155,28 @@ public class PlayerScript : MonoBehaviour
         Logic.isGameOver = true;
         
         // Play the death animation
-        var DeathExplosionInstance = Instantiate(DeathExplosion, transform.position, Quaternion.Euler(0, 0, transform.eulerAngles.z + 180));
-        DeathExplosionInstance.transform.localScale = new Vector3(1, 1, 1);
-        var mainModule = DeathExplosionInstance.main;
-        Color color;
-        if (UnityEngine.ColorUtility.TryParseHtmlString("#b0ea3f", out color))
-        {
-            mainModule.startColor = color;
-        }
+        var DeathExplosionInstance = Instantiate(DeathExplosion, transform.position, transform.rotation);
+        float explosionDuration = DeathExplosionInstance.main.duration;
         DeathExplosionInstance.Play();
+        Destroy(DeathExplosionInstance.gameObject, explosionDuration);
 
         // Destroy the player object
-        Destroy(DeathExplosionInstance.gameObject, DeathExplosionInstance.main.duration);
         Destroy(gameObject);
     }
-
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        try
+        {
+            Debug.Log("Player hit " + other.gameObject.name);
+            BadTouchScript BadTouchScript = other.gameObject.GetComponent<BadTouchScript>();
+            if (BadTouchScript != null)
+            {
+                Health.takeDamage(BadTouchScript.TouchDamage);
+            }
+        }
+        catch (System.NullReferenceException)
+        {
+            Debug.Log("No BadTouchScript found on " + other.gameObject.name);
+        }
+    }
 }
