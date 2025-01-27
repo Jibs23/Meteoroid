@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde015bb18f30794e991bc793c2993c1, type: 3}
   m_Name: DamagePlayer
   m_EditorClassIdentifier: 
-  ImpulseDuration: 0.2
+  ImpulseDuration: 0.4
   ImpactForce: 1
-  defaultVelocity: {x: 0, y: -1, z: 0}
+  defaultVelocity: {x: -1, y: 0, z: 0}
   Implusecurve:
     serializedVersion: 2
     m_Curve: []

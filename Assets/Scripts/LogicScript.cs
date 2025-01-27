@@ -24,6 +24,16 @@ public class LogicScript : MonoBehaviour
         {
             CheckScreenSize();
         }
+        if (isGameOver)
+        {
+            // If the game is over
+            // Check if the player presses the R key
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
+            {
+                // Reload the scene
+                UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+            }
+        }
 
     }
     void CheckScreenSize() // This function checks the size of the screen in world units

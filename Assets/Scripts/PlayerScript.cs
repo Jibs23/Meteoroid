@@ -1,6 +1,4 @@
-using Unity.VisualScripting;
 using UnityEngine;
-
 public class PlayerScript : MonoBehaviour
 {
     public HealthScript Health;
@@ -9,14 +7,15 @@ public class PlayerScript : MonoBehaviour
     public LogicScript Logic;
     public Animator Animator;
     public HealthUiScript HealthUI;
-    private SpriteRenderer spriteRenderer;
     public ParticleSystem ThrustParticles;
     public ParticleSystem DeathExplosion;
+    public SoundManagerScript Sound;
     public float MaxSpeed = 5f;
     public float moveSpeed = 5f;
     public float CurrentSpeed;
     public float rotationSpeed = 1250f;
     public float bulletCooldown = 0.5f;
+    public float invinsibilityDuration = 2f;
     public bool IsThrusting;
     public bool IsOffScreen;
     public bool IsDying;
@@ -26,9 +25,9 @@ public class PlayerScript : MonoBehaviour
     {
         Logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
         HealthUI = GameObject.FindGameObjectWithTag("HealthUI").GetComponent<HealthUiScript>();
+        Sound = GameObject.FindGameObjectWithTag("Sound").GetComponent<SoundManagerScript>();
         Health = GetComponent<HealthScript>();
         Animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -43,8 +42,6 @@ public class PlayerScript : MonoBehaviour
         {
             IsOffScreen = false;
         }
-
-
 
         // Handle key inputs
         foreach (KeyCode key in new KeyCode[] { KeyCode.W, KeyCode.D, KeyCode.A, KeyCode.Space }) // Loop through the keys we want to check for input
@@ -78,6 +75,7 @@ public class PlayerScript : MonoBehaviour
                 }
             }
         }
+
         // PARTICLES
         if (IsThrusting)
         {
@@ -87,8 +85,10 @@ public class PlayerScript : MonoBehaviour
         {
             ThrustParticles.Stop();
         }
+        Animator.SetBool("IsThrusting", IsThrusting); // Set the IsThrusting parameter in the Animator to the value of IsThrusting
 
         CurrentSpeed = myRigidbody.linearVelocity.magnitude;
+
         if (CurrentSpeed > MaxSpeed)
         {
             myRigidbody.linearVelocity = myRigidbody.linearVelocity.normalized * MaxSpeed; // Normalize the velocity and multiply it by the max speed
@@ -105,7 +105,7 @@ public class PlayerScript : MonoBehaviour
         {
             Die();
         }
-        Animator.SetBool("IsThrusting", IsThrusting); // Set the IsThrusting parameter in the Animator to the value of IsThrusting
+        
 
     }
     void UpdateHealthEndicator()
@@ -137,6 +137,9 @@ public class PlayerScript : MonoBehaviour
     {
         if (Time.time > lastShotTime + bulletCooldown) // Check if enough time has passed since the last shot by comparing the current time to the last shot time plus the cooldown
         {
+            // play sound effect
+            Sound.PlayLazer();
+
             // Create a new bullet
             GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
             
@@ -145,6 +148,10 @@ public class PlayerScript : MonoBehaviour
 
             // Add a number to the bullet's y transform relative to Player object's rotation
             bullet.transform.position += transform.up;
+
+            // Add the player's velocity to the bullet
+            Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
+            bulletRigidbody.linearVelocity += myRigidbody.linearVelocity;
 
             // Update the last shot time
             lastShotTime = Time.time;
@@ -155,6 +162,7 @@ public class PlayerScript : MonoBehaviour
         Logic.isGameOver = true;
         
         // Play the death animation
+        Sound.PlayPlayerDeath();
         var DeathExplosionInstance = Instantiate(DeathExplosion, transform.position, transform.rotation);
         float explosionDuration = DeathExplosionInstance.main.duration;
         DeathExplosionInstance.Play();

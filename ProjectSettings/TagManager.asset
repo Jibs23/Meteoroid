@@ -8,6 +8,8 @@ TagManager:
   - Logic
   - Rock
   - Projectile
+  - HealthUI
+  - Sound
   layers:
   - Default
   - TransparentFX

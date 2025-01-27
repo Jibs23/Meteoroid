@@ -416,8 +416,8 @@ GameObject:
   - component: {fileID: 5321889698761475820}
   - component: {fileID: 6072406948838139421}
   - component: {fileID: -4546754071854843019}
-  - component: {fileID: 3106383227663833439}
   - component: {fileID: 1006887241848991211}
+  - component: {fileID: 8589584758699339505}
   m_Layer: 0
   m_Name: RockLarge
   m_TagString: Rock
@@ -546,10 +546,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c77a84cfa969eaf4a9aabb523982fa1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenShakeProfile: {fileID: 11400000, guid: ef94e8b16bb963e4b8ce032646ba9e0d, type: 2}
+  screenShakeProfile_dammage: {fileID: 11400000, guid: ef94e8b16bb963e4b8ce032646ba9e0d, type: 2}
+  screenShakeProfile_die: {fileID: 0}
   MainCamera: {fileID: 0}
   MaxHealth: 5
   CurrentHealth: 5
+  isInvinsible: 0
 --- !u!114 &6072406948838139421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -579,7 +581,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RockSpawn: {fileID: 0}
---- !u!114 &3106383227663833439
+  DeathExplosion: {fileID: 1812313173889548293, guid: 207899aed2abe18418175e4c3d4ea426, type: 3}
+--- !u!114 &1006887241848991211
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -588,7 +591,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 3952047864391941474}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd438dd108a0f284aa931a2da434f1d3, type: 3}
+  m_Script: {fileID: 11500000, guid: 3629f910e4f7f8a4ba43e31b4af43e76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TouchDamage: 1
+--- !u!114 &8589584758699339505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3952047864391941474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_ImpulseDefinition:
@@ -632,22 +648,3 @@ MonoBehaviour:
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
   m_DefaultVelocity: {x: 0, y: -1, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  m_IgnoreTag: 
-  m_UseImpactDirection: 0
-  m_ScaleImpactWithMass: 0
-  m_ScaleImpactWithSpeed: 0
---- !u!114 &1006887241848991211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3952047864391941474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3629f910e4f7f8a4ba43e31b4af43e76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
